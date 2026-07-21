@@ -53,3 +53,56 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+class _CountryOption {
+  const _CountryOption(this.value, this.label, this.flag);
+  final String? value;
+  final String label;
+  final String flag;
+}
+
+class _CountryDrawer extends StatelessWidget {
+  const _CountryDrawer({required this.onSelect});
+  final void Function(String?) onSelect;
+
+  static const _options = [
+    _CountryOption(null, 'Semua Negara', '🌍'),
+    _CountryOption('Egypt', 'Mesir', '🇪🇬'),
+    _CountryOption('Morocco', 'Maghribi', '🇲🇦'),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(color: KptTheme.navy),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  'eTT Mobile',
+                  style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  'Program pengajian Timur Tengah',
+                  style: TextStyle(color: Colors.white70, fontSize: 13),
+                ),
+              ],
+            ),
+          ),
+          for (final option in _options)
+            ListTile(
+              leading: Text(option.flag, style: const TextStyle(fontSize: 22)),
+              title: Text(option.label),
+              onTap: () => onSelect(option.value),
+            ),
+        ],
+      ),
+    );
+  }
+}
