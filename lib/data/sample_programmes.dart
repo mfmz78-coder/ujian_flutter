@@ -4,7 +4,9 @@
 // (Jangan taip dari kosong — salin terus ke projek anda.)
 // ══════════════════════════════════════════════════════════════════
 
-import '../models/programme.dart';
+import '../models/programme.dart';   // atau '../models/programme.dart' bergantung lokasi
+import '../data/sample_programmes.dart';
+import '../theme.dart';
 
 /// Data contoh 8 tawaran pengajian eTT (Mesir & Maghribi).
 ///
