@@ -14,6 +14,7 @@ class ProgrammeListScreen extends StatelessWidget {
       itemCount: sampleProgrammes.length,
       itemBuilder: (context, index) {
         final p = sampleProgrammes[index];
+        print('Kad dibina untuk: ${p.universityName}');
         return ProgrammeCard(programme: p);
       },
     );
