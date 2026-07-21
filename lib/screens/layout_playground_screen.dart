@@ -17,10 +17,6 @@ class LayoutPlaygroundScreen extends StatelessWidget {
           // ╔═══════════════════════════════════════════════╗
           // ║  3.2 — Senarai banner masuk DI SINI           ║
           // ╚═══════════════════════════════════════════════╝
-          for (final p in sampleProgrammes) ...[
-            ProgrammeBanner(programme: p),
-            const SizedBox(height: 16),
-          ],
         ],
       ),
     );
