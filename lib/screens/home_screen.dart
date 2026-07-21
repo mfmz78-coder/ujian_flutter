@@ -23,6 +23,12 @@ class _HomeScreenState extends State<HomeScreen> {
     ProfileScreen(),
   ];
 
+  void _selectCountry(String? country) {
+    // Buat masa ini: tutup Drawer sahaja. Tapisan sebenar memerlukan
+    // setState() + hantar data ke widget anak — itu Hari 3 (SESI 5).
+    Navigator.of(context).pop(); // tutup Drawer
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       // 👈 5.3 — TAMBAH drawer: SELEPAS bottomNavigationBar
+            appBar: AppBar(title: Text('eTT Mobile · ${_titles[_index]}')),
+      drawer: _CountryDrawer(onSelect: _selectCountry),
+      body: _screens[_index],
     );
   }
 }
