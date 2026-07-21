@@ -45,7 +45,12 @@ class ProgrammeBanner extends StatelessWidget {
         // ╔═══════════════════════════════════════════════════╗
         // ║  2.2 — Positioned nama universiti masuk DI SINI   ║
         // ╚═══════════════════════════════════════════════════╝
-
+        // ── 2.3 — Pill kategori, ditindan di sudut kanan atas ──
+        Positioned(
+          top: 12,
+          right: 12,
+          child: CategoryPill(category: programme.category),
+        ),
         // ╔═══════════════════════════════════════════════════╗
         // ║  2.3 — Positioned pill kategori masuk DI SINI     ║
         // ╚═══════════════════════════════════════════════════╝
