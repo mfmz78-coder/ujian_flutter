@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Autopush Watcher",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        ".githooks/autopush_on_save.py",
+        "--path",
+        "lib",
+        "--message",
+        "Auto-save"
+      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "group": {
+        "kind": "none",
+        "isDefault": false
+      }
+    }
+  ]
+}
