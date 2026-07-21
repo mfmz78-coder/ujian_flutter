@@ -98,12 +98,41 @@
 
 // lib/main.dart — STATUS AKHIR HARI 2
 import 'package:flutter/material.dart';
+import 'models/programme.dart';
+import 'data/sample_programmes.dart';
 
+// ...
 import 'screens/home_screen.dart';
 import 'theme.dart';
 
 void main() {
   runApp(const EttMobileApp());
+}
+
+// ── 1.1 — Ringkasan program TANPA Expanded (akan overflow) ──────
+class ProgrammeSummaryRow extends StatelessWidget {
+  const ProgrammeSummaryRow({super.key, required this.programme});
+
+  final Programme programme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+            child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              programme.universityName,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          Text(' — ${programme.city}, ${programme.countryLabel}'),
+        ],
+      ),
+    );
+  }
 }
 
 class EttMobileApp extends StatelessWidget {
