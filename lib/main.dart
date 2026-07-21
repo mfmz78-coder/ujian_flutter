@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'data/sample_programmes.dart';
 import 'theme.dart';
-import 'widgets/programme_card.dart';
+// import 'widgets/programme_card.dart';
+import 'models/programme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,20 +18,31 @@ class MyApp extends StatelessWidget {
       theme: KptTheme.light,
       home: Scaffold(
         appBar: AppBar(title: const Text('eTT Mobile')),
-        body: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 12),
-          children: [
-            ProgrammeCard(
-              programme: sampleProgrammes[0],
-              onTap: () {
-                debugPrint('Universiti Al-Azhar ditekan');
-              },
-            ),
-            ProgrammeCard(programme: sampleProgrammes[6]),
-            const SizedBox(height: 16),
-            const SavedProgrammeCounter(),
-          ],
+        body: Center(
+          child: ProgrammeSummaryRow(programme: sampleProgrammes[6]),
         ),
+      ),
+    );
+  }
+}
+
+class ProgrammeSummaryRow extends StatelessWidget {
+  const ProgrammeSummaryRow({super.key, required this.programme});
+
+  final Programme programme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          Text(
+            programme.universityName,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+          Text(' — ${programme.city}, ${programme.countryLabel}'),
+        ],
       ),
     );
   }
