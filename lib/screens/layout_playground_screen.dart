@@ -1,6 +1,6 @@
 // lib/screens/layout_playground_screen.dart
 import 'package:flutter/material.dart';
-
+import '../widgets/programme_intake_tile.dart';
 import '../data/sample_programmes.dart';
 import '../widgets/programme_banner.dart';
 
@@ -19,6 +19,14 @@ class LayoutPlaygroundScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 16),
               child: ProgrammeBanner(programme: p),
             ),
+            const SizedBox(height: 8),
+          Text(
+            'Versi Ringkas (Card + ListTile)',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          const SizedBox(height: 8),
+          for (final p in sampleProgrammes)
+            ProgrammeIntakeTile(programme: p),
         ],
       ),
     );
