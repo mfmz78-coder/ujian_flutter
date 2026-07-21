@@ -1,0 +1,46 @@
+// lib/screens/home_screen.dart
+import 'package:flutter/material.dart';
+
+import '../theme.dart';
+import 'my_applications_screen.dart';
+import 'profile_screen.dart';
+import 'programme_list_screen.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _index = 0;
+
+  static const _titles = ['Program', 'Permohonan Saya', 'Profil'];
+  static const _screens = [
+    ProgrammeListScreen(),
+    MyApplicationsScreen(),
+    ProfileScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('eTT Mobile · ${_titles[_index]}')),
+      body: _screens[_index],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _index,
+        onTap: (i) => setState(() => _index = i),
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: KptTheme.navy,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.school_outlined), label: 'Program'),
+          BottomNavigationBarItem(icon: Icon(Icons.assignment_outlined), label: 'Permohonan Saya'),
+          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Profil'),
+        ],
+      ),
+
+      // 👈 5.3 — TAMBAH drawer: SELEPAS bottomNavigationBar
+    );
+  }
+}
