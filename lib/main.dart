@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'data/sample_programmes.dart';
+import 'theme.dart';
+import 'widgets/programme_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,16 +14,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: KptTheme.light,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('eTT Mobile'),
-        ),
-        body: const Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-            padding: EdgeInsets.only(top: 24),
-            child: SavedProgrammeCounter(),
-          ),
+        appBar: AppBar(title: const Text('eTT Mobile')),
+        body: ListView(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          children: [
+            ProgrammeCard(
+              programme: sampleProgrammes[0],
+              onTap: () {
+                debugPrint('Universiti Al-Azhar ditekan');
+              },
+            ),
+            ProgrammeCard(programme: sampleProgrammes[6]),
+            const SizedBox(height: 16),
+            const SavedProgrammeCounter(),
+          ],
         ),
       ),
     );
@@ -31,8 +40,7 @@ class SavedProgrammeCounter extends StatefulWidget {
   const SavedProgrammeCounter({super.key});
 
   @override
-  State<SavedProgrammeCounter> createState() =>
-      _SavedProgrammeCounterState();
+  State<SavedProgrammeCounter> createState() => _SavedProgrammeCounterState();
 }
 
 class _SavedProgrammeCounterState extends State<SavedProgrammeCounter> {
