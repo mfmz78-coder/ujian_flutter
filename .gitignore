@@ -17,6 +17,7 @@ migrate_working_dir/
 # Keep any local logs or pid files out of version control.
 .githooks/*.log
 .githooks/*.pid
+nohup.out
 
 # IntelliJ related
 *.iml
