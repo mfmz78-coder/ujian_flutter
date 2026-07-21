@@ -14,6 +14,11 @@ class LayoutPlaygroundScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          Text(
+            'Semua Tawaran Pengajian',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          const SizedBox(height: 12),
           for (final p in sampleProgrammes)
             Padding(
               padding: const EdgeInsets.only(bottom: 16),
