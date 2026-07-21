@@ -14,9 +14,11 @@ class LayoutPlaygroundScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // ╔═══════════════════════════════════════════════╗
-          // ║  3.2 — Senarai banner masuk DI SINI           ║
-          // ╚═══════════════════════════════════════════════╝
+          for (final p in sampleProgrammes)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: ProgrammeBanner(programme: p),
+            ),
         ],
       ),
     );
