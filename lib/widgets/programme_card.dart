@@ -1,8 +1,30 @@
+// ══════════════════════════════════════════════════════════════════
+// FAIL STARTER — salin ke:  lib/widgets/programme_card.dart
+// Kad ringkasan satu tawaran + CategoryPill (cip kategori SPM/STAM).
+// Lab Hari 2 GUNA SEMULA `CategoryPill` dari fail ini — jadi salin dulu.
+// (Jangan taip dari kosong — salin terus ke projek anda.)
+// ══════════════════════════════════════════════════════════════════
 import 'package:flutter/material.dart';
 
 import '../models/programme.dart';
 import '../theme.dart';
 
+// Format ringkas RM tanpa pakej luar (cth. 12345 -> "RM12,345"), supaya
+// fail starter ini terus berfungsi dalam projek `flutter create` baharu.
+// (Aplikasi rujukan `projek/ett_mobile` guna `NumberFormat` dari pakej intl.)
+String _formatRm(num value) {
+  final digits = value.round().toString();
+  final buffer = StringBuffer('RM');
+  for (var i = 0; i < digits.length; i++) {
+    if (i > 0 && (digits.length - i) % 3 == 0) buffer.write(',');
+    buffer.write(digits[i]);
+  }
+  return buffer.toString();
+}
+
+/// Kad ringkasan satu tawaran pengajian dalam senarai.
+///
+/// Struktur: Row [ bendera | Expanded(Column: universiti + bidang) | kos RM ].
 class ProgrammeCard extends StatelessWidget {
   const ProgrammeCard({super.key, required this.programme, this.onTap});
 
@@ -12,7 +34,7 @@ class ProgrammeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       child: InkWell(
         onTap: onTap,
         child: Padding(
@@ -28,9 +50,6 @@ class ProgrammeCard extends StatelessWidget {
                     style: const TextStyle(fontSize: 30),
                   ),
                   const SizedBox(width: 12),
-
-                  // Expanded mengelakkan nama universiti menolak
-                  // bahagian kos keluar daripada skrin.
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,18 +57,17 @@ class ProgrammeCard extends StatelessWidget {
                         Text(
                           programme.universityName,
                           style: const TextStyle(
-                            color: KptTheme.navy,
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
+                            color: KptTheme.navy,
                           ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
                         ),
-                        const SizedBox(height: 3),
+                        const SizedBox(height: 2),
                         Text(
                           programme.fieldOfStudy,
                           style: TextStyle(
                             color: Colors.grey[800],
+                            fontSize: 13,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -58,60 +76,38 @@ class ProgrammeCard extends StatelessWidget {
                           '${programme.city}, ${programme.countryLabel}',
                           style: TextStyle(
                             color: Colors.grey[600],
-                            fontSize: 13,
+                            fontSize: 12,
                           ),
                         ),
                       ],
                     ),
                   ),
-
                   const SizedBox(width: 8),
-
+                  // Anggaran kos tahunan dalam RM (ilustrasi).
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const Text(
-                        'Anggaran',
-                        style: TextStyle(color: Colors.grey, fontSize: 11),
-                      ),
                       Text(
-                        'RM ${programme.estimatedAnnualCostMyr}',
+                        _formatRm(programme.estimatedAnnualCostMyr),
                         style: const TextStyle(
-                          color: KptTheme.navy,
-                          fontSize: 13,
                           fontWeight: FontWeight.bold,
+                          color: KptTheme.navy,
                         ),
                       ),
-                      const Text(
-                        'setahun',
-                        style: TextStyle(color: Colors.grey, fontSize: 11),
+                      Text(
+                        '/tahun',
+                        style: TextStyle(color: Colors.grey[600], fontSize: 11),
                       ),
                     ],
                   ),
                 ],
               ),
               const SizedBox(height: 12),
-              const Divider(height: 1),
-              const SizedBox(height: 12),
-
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                crossAxisAlignment: WrapCrossAlignment.center,
+              Row(
                 children: [
                   CategoryPill(category: programme.category),
-                  ProgrammeInfoChip(
-                    icon: Icons.school_outlined,
-                    label: programme.studyLevel.label,
-                  ),
-                  ProgrammeInfoChip(
-                    icon: Icons.calendar_month_outlined,
-                    label: programme.intakeMonth,
-                  ),
-                  ProgrammeInfoChip(
-                    icon: Icons.groups_outlined,
-                    label: '${programme.quotaSeats} tempat',
-                  ),
+                  const SizedBox(width: 8),
+                  _Pill(text: programme.countryLabel, color: KptTheme.navy),
                 ],
               ),
             ],
@@ -122,6 +118,7 @@ class ProgrammeCard extends StatelessWidget {
   }
 }
 
+/// Cip kategori kemasukan (SPM / STAM / kedua-duanya).
 class CategoryPill extends StatelessWidget {
   const CategoryPill({super.key, required this.category});
 
@@ -129,46 +126,32 @@ class CategoryPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final label = switch (category) {
-      EntryCategory.spm => 'SPM ++',
-      EntryCategory.stam => 'STAM',
-      EntryCategory.both => 'SPM / STAM',
-    };
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      decoration: BoxDecoration(
-        color: KptTheme.gold.withValues(alpha: 0.18),
-        borderRadius: BorderRadius.circular(100),
-        border: Border.all(color: KptTheme.gold),
-      ),
-      child: Text(
-        label,
-        style: const TextStyle(
-          color: KptTheme.navy,
-          fontSize: 12,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
+    return _Pill(text: category.label, color: KptTheme.gold);
   }
 }
 
-class ProgrammeInfoChip extends StatelessWidget {
-  const ProgrammeInfoChip({super.key, required this.icon, required this.label});
+class _Pill extends StatelessWidget {
+  const _Pill({required this.text, required this.color});
 
-  final IconData icon;
-  final String label;
+  final String text;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 15, color: Colors.grey[700]),
-        const SizedBox(width: 4),
-        Text(label, style: TextStyle(color: Colors.grey[700], fontSize: 12)),
-      ],
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: color,
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 }

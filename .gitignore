@@ -12,6 +12,12 @@
 .swiftpm/
 migrate_working_dir/
 
+# Project-local watcher logs and runtime files
+# The project includes a small watcher at `.githooks/autopush_on_save.py`.
+# Keep any local logs or pid files out of version control.
+.githooks/*.log
+.githooks/*.pid
+
 # IntelliJ related
 *.iml
 *.ipr
