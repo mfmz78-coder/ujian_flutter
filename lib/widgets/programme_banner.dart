@@ -33,6 +33,7 @@ class ProgrammeBanner extends StatelessWidget {
         Positioned(
           left: 16,
           bottom: 14,
+          right: 90,
           child: Text(
             '${programme.universityName}\n${programme.fieldOfStudy}',
             style: const TextStyle(
