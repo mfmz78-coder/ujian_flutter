@@ -10,7 +10,9 @@
 /// eTT ialah sistem Bahagian Pengantarabangsaan Pendidikan Tinggi (BPPT), JPT,
 /// KPT. Pelajar meneliti tawaran ini sebelum membuat permohonan.
 library;
-
+import '../models/programme.dart';   // atau '../models/programme.dart' bergantung lokasi
+import '../data/sample_programmes.dart';
+import '../theme.dart';
 /// Peringkat pengajian yang ditawarkan.
 enum StudyLevel {
   foundation,
