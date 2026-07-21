@@ -19,10 +19,10 @@ enum StudyLevel {
 
   /// Label Bahasa Melayu untuk paparan UI.
   String get label => switch (this) {
-    StudyLevel.foundation => 'Asasi',
-    StudyLevel.diploma => 'Diploma',
-    StudyLevel.bachelor => 'Ijazah Sarjana Muda',
-  };
+        StudyLevel.foundation => 'Asasi',
+        StudyLevel.diploma => 'Diploma',
+        StudyLevel.bachelor => 'Ijazah Sarjana Muda',
+      };
 
   static StudyLevel fromString(String value) {
     return StudyLevel.values.firstWhere(
@@ -43,10 +43,10 @@ enum EntryCategory {
 
   /// Label Bahasa Melayu untuk paparan UI.
   String get label => switch (this) {
-    EntryCategory.spm => 'SPM',
-    EntryCategory.stam => 'STAM',
-    EntryCategory.both => 'SPM atau STAM',
-  };
+        EntryCategory.spm => 'SPM',
+        EntryCategory.stam => 'STAM',
+        EntryCategory.both => 'SPM atau STAM',
+      };
 
   /// Adakah kategori sijil pemohon [applicant] layak untuk tawaran ini?
   bool accepts(EntryCategory applicant) =>
@@ -111,17 +111,17 @@ class Programme {
 
   /// Emoji bendera negara — nilai terbitan (derived), tiada dalam JSON.
   String get flagEmoji => switch (country) {
-    'Egypt' => '🇪🇬',
-    'Morocco' => '🇲🇦',
-    _ => '🌍',
-  };
+        'Egypt' => '🇪🇬',
+        'Morocco' => '🇲🇦',
+        _ => '🌍',
+      };
 
   /// Nama negara dalam Bahasa Melayu untuk paparan UI.
   String get countryLabel => switch (country) {
-    'Egypt' => 'Mesir',
-    'Morocco' => 'Maghribi',
-    _ => country,
-  };
+        'Egypt' => 'Mesir',
+        'Morocco' => 'Maghribi',
+        _ => country,
+      };
 
   /// Bina objek daripada JSON (guna bila sambung REST API — SESI 6 & 7).
   factory Programme.fromJson(Map<String, dynamic> json) {
@@ -133,8 +133,8 @@ class Programme {
       fieldOfStudy: json['fieldOfStudy'] as String,
       studyLevel: StudyLevel.fromString(json['studyLevel'] as String),
       category: EntryCategory.fromString(json['category'] as String),
-      estimatedAnnualCostMyr: (json['estimatedAnnualCostMyr'] as num)
-          .toDouble(),
+      estimatedAnnualCostMyr:
+          (json['estimatedAnnualCostMyr'] as num).toDouble(),
       intakeMonth: json['intakeMonth'] as String,
       recognitionNote: json['recognitionNote'] as String,
       quotaSeats: json['quotaSeats'] as int,
@@ -142,16 +142,16 @@ class Programme {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'universityName': universityName,
-    'country': country,
-    'city': city,
-    'fieldOfStudy': fieldOfStudy,
-    'studyLevel': studyLevel.name,
-    'category': category.name,
-    'estimatedAnnualCostMyr': estimatedAnnualCostMyr,
-    'intakeMonth': intakeMonth,
-    'recognitionNote': recognitionNote,
-    'quotaSeats': quotaSeats,
-  };
+        'id': id,
+        'universityName': universityName,
+        'country': country,
+        'city': city,
+        'fieldOfStudy': fieldOfStudy,
+        'studyLevel': studyLevel.name,
+        'category': category.name,
+        'estimatedAnnualCostMyr': estimatedAnnualCostMyr,
+        'intakeMonth': intakeMonth,
+        'recognitionNote': recognitionNote,
+        'quotaSeats': quotaSeats,
+      };
 }
