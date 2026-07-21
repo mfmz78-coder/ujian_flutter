@@ -58,6 +58,11 @@ class KptTheme {
           borderRadius: BorderRadius.circular(12),
         ),
       ),
+
+      textTheme: const TextTheme(
+        titleLarge: TextStyle(fontWeight: FontWeight.bold, color: KptTheme.navy),
+        titleMedium: TextStyle(fontWeight: FontWeight.w600, color: KptTheme.navy),
+      ),
     );
   }
 }
