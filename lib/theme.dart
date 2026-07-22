@@ -14,7 +14,7 @@ import 'package:flutter/material.dart';
 class KptTheme {
   KptTheme._();
 
-  static const Color navy = Color(0xFF1A2B5C);
+  static const Color navy = Color(0xFF6A1B9A);
   static const Color gold = Color(0xFFD4A017);
   static const Color bgLight = Color(0xFFF5F6FA);
 
