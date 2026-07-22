@@ -310,51 +310,51 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
               ),
               const SizedBox(height: 14),
 
-_ChoiceDropdown(
-  label: 'Pilihan 1 (wajib)',
-  value: _choice1,
-  programmes: choiceProgrammes,
-  onChanged: (value) {
-    setState(() {
-      _choice1 = value;
-    });
-  },
-  validator: (value) {
-    if (value == null) {
-      return 'Pilihan 1 diperlukan';
-    }
+              _ChoiceDropdown(
+                label: 'Pilihan 1 (wajib)',
+                value: _choice1,
+                programmes: choiceProgrammes,
+                onChanged: (value) {
+                  setState(() {
+                    _choice1 = value;
+                  });
+                },
+                validator: (value) {
+                  if (value == null) {
+                    return 'Pilihan 1 diperlukan';
+                  }
 
-    return null;
-  },
-),
+                  return null;
+                },
+              ),
 
-const SizedBox(height: 14),
+              const SizedBox(height: 14),
 
-_ChoiceDropdown(
-  label: 'Pilihan 2 (pilihan)',
-  value: _choice2,
-  programmes: choiceProgrammes,
-  includeNone: true,
-  onChanged: (value) {
-    setState(() {
-      _choice2 = value;
-    });
-  },
-),
+              _ChoiceDropdown(
+                label: 'Pilihan 2 (pilihan)',
+                value: _choice2,
+                programmes: choiceProgrammes,
+                includeNone: true,
+                onChanged: (value) {
+                  setState(() {
+                    _choice2 = value;
+                  });
+                },
+              ),
 
-const SizedBox(height: 14),
+              const SizedBox(height: 14),
 
-_ChoiceDropdown(
-  label: 'Pilihan 3 (pilihan)',
-  value: _choice3,
-  programmes: choiceProgrammes,
-  includeNone: true,
-  onChanged: (value) {
-    setState(() {
-      _choice3 = value;
-    });
-  },
-),
+              _ChoiceDropdown(
+                label: 'Pilihan 3 (pilihan)',
+                value: _choice3,
+                programmes: choiceProgrammes,
+                includeNone: true,
+                onChanged: (value) {
+                  setState(() {
+                    _choice3 = value;
+                  });
+                },
+              ),
             ],
           ),
         ),
@@ -385,15 +385,10 @@ class _ChoiceDropdown extends StatelessWidget {
     return DropdownButtonFormField<String>(
       initialValue: value,
       isExpanded: true,
-      decoration: InputDecoration(
-        labelText: label,
-      ),
+      decoration: InputDecoration(labelText: label),
       items: [
         if (includeNone)
-          const DropdownMenuItem<String>(
-            value: null,
-            child: Text('Tiada'),
-          ),
+          const DropdownMenuItem<String>(value: null, child: Text('Tiada')),
         for (final programme in programmes)
           DropdownMenuItem<String>(
             value: programme.id,
