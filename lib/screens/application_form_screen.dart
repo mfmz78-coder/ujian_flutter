@@ -21,6 +21,24 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
   // ╔══════════════════════════════════════════════════╗
   // ║  4.2 — Controller masuk DI SINI                  ║
   // ╚══════════════════════════════════════════════════╝
+    // ── 4.2 — Input Controller ─────────────────────────
+  final _nameCtrl = TextEditingController();
+  final _icCtrl = TextEditingController();
+  final _emailCtrl = TextEditingController();
+  final _phoneCtrl = TextEditingController();
+  final _academicCtrl = TextEditingController();
+
+  // 👈 4.3 — TAMBAH dispose() SELEPAS BARIS INI
+    @override
+  void dispose() {
+    // ── 4.3 — Bersihkan setiap Controller ─────────────
+    _nameCtrl.dispose();
+    _icCtrl.dispose();
+    _emailCtrl.dispose();
+    _phoneCtrl.dispose();
+    _academicCtrl.dispose();
+    super.dispose(); // WAJIB baris TERAKHIR
+  }
 
   void _submitDummy() { /* ... kod Latihan 3, buang pada 4.12 ... */ }
 
@@ -45,6 +63,16 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
               // ╔══════════════════════════════════════╗
               // ║  4.4 — TextFormField masuk DI SINI   ║
               // ╚══════════════════════════════════════╝
+            // ── 4.4 — Nama Penuh ──────────────────────
+            TextFormField(
+              controller: _nameCtrl,
+              textCapitalization: TextCapitalization.words,
+              decoration: const InputDecoration(labelText: 'Nama Penuh'),
+              validator: (v) =>
+                  (v == null || v.trim().isEmpty) ? 'Nama diperlukan' : null,
+            ),
+
+            // 👈 4.5 — TAMBAH medan IC SELEPAS BARIS INI
             ],
           ),
         ),
