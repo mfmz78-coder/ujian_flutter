@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'models/programme.dart';
 import 'data/sample_programmes.dart';
+import 'screens/programme_grid_screen.dart';
 import 'screens/home_screen.dart';
 import 'theme.dart';
 
