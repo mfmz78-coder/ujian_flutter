@@ -28,27 +28,27 @@ enum ApplicationStatus {
 
   /// Label Bahasa Melayu untuk paparan UI.
   String get label => switch (this) {
-        ApplicationStatus.draft => 'Draf',
-        ApplicationStatus.submitted => 'Dihantar',
-        ApplicationStatus.underReview => 'Dalam Semakan',
-        ApplicationStatus.eligible => 'Layak',
-        ApplicationStatus.notEligible => 'Tidak Layak',
-        ApplicationStatus.offered => 'Tawaran',
-        ApplicationStatus.accepted => 'Diterima',
-        ApplicationStatus.rejected => 'Ditolak',
-      };
+    ApplicationStatus.draft => 'Draf',
+    ApplicationStatus.submitted => 'Dihantar',
+    ApplicationStatus.underReview => 'Dalam Semakan',
+    ApplicationStatus.eligible => 'Layak',
+    ApplicationStatus.notEligible => 'Tidak Layak',
+    ApplicationStatus.offered => 'Tawaran',
+    ApplicationStatus.accepted => 'Diterima',
+    ApplicationStatus.rejected => 'Ditolak',
+  };
 
   /// Warna badge status untuk paparan UI.
   Color get color => switch (this) {
-        ApplicationStatus.draft => Colors.grey,
-        ApplicationStatus.submitted => Colors.blue,
-        ApplicationStatus.underReview => Colors.orange,
-        ApplicationStatus.eligible => Colors.teal,
-        ApplicationStatus.notEligible => Colors.red,
-        ApplicationStatus.offered => Colors.indigo,
-        ApplicationStatus.accepted => Colors.green,
-        ApplicationStatus.rejected => Colors.red,
-      };
+    ApplicationStatus.draft => Colors.grey,
+    ApplicationStatus.submitted => Colors.blue,
+    ApplicationStatus.underReview => Colors.orange,
+    ApplicationStatus.eligible => Colors.teal,
+    ApplicationStatus.notEligible => Colors.red,
+    ApplicationStatus.offered => Colors.indigo,
+    ApplicationStatus.accepted => Colors.green,
+    ApplicationStatus.rejected => Colors.red,
+  };
 
   static ApplicationStatus fromString(String value) {
     return ApplicationStatus.values.firstWhere(
@@ -130,10 +130,10 @@ class Application {
 
   /// Nama negara dalam Bahasa Melayu untuk paparan UI.
   String get countryLabel => switch (country) {
-        'Egypt' => 'Mesir',
-        'Morocco' => 'Maghribi',
-        _ => country,
-      };
+    'Egypt' => 'Mesir',
+    'Morocco' => 'Maghribi',
+    _ => country,
+  };
 
   factory Application.fromJson(Map<String, dynamic> json) {
     return Application(
@@ -142,13 +142,13 @@ class Application {
       icNumber: json['icNumber'] as String,
       email: json['email'] as String,
       phoneNumber: json['phoneNumber'] as String,
-      academicCategory:
-          EntryCategory.fromString(json['academicCategory'] as String),
+      academicCategory: EntryCategory.fromString(
+        json['academicCategory'] as String,
+      ),
       academicSummary: json['academicSummary'] as String,
       country: json['country'] as String,
       fieldOfStudy: json['fieldOfStudy'] as String,
-      universityChoiceIds:
-          (json['universityChoiceIds'] as List).cast<String>(),
+      universityChoiceIds: (json['universityChoiceIds'] as List).cast<String>(),
       uploadedDocuments:
           (json['uploadedDocuments'] as List?)?.cast<String>() ?? const [],
       status: ApplicationStatus.fromString(json['status'] as String),
@@ -159,18 +159,18 @@ class Application {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'fullName': fullName,
-        'icNumber': icNumber,
-        'email': email,
-        'phoneNumber': phoneNumber,
-        'academicCategory': academicCategory.name,
-        'academicSummary': academicSummary,
-        'country': country,
-        'fieldOfStudy': fieldOfStudy,
-        'universityChoiceIds': universityChoiceIds,
-        'uploadedDocuments': uploadedDocuments,
-        'status': status.name,
-        'submittedAt': submittedAt?.toIso8601String(),
-      };
+    'id': id,
+    'fullName': fullName,
+    'icNumber': icNumber,
+    'email': email,
+    'phoneNumber': phoneNumber,
+    'academicCategory': academicCategory.name,
+    'academicSummary': academicSummary,
+    'country': country,
+    'fieldOfStudy': fieldOfStudy,
+    'universityChoiceIds': universityChoiceIds,
+    'uploadedDocuments': uploadedDocuments,
+    'status': status.name,
+    'submittedAt': submittedAt?.toIso8601String(),
+  };
 }
