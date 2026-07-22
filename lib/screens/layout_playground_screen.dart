@@ -24,14 +24,13 @@ class LayoutPlaygroundScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 16),
               child: ProgrammeBanner(programme: p),
             ),
-            const SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             'Versi Ringkas (Card + ListTile)',
             style: Theme.of(context).textTheme.titleLarge,
           ),
           const SizedBox(height: 8),
-          for (final p in sampleProgrammes)
-            ProgrammeIntakeTile(programme: p),
+          for (final p in sampleProgrammes) ProgrammeIntakeTile(programme: p),
         ],
       ),
     );
