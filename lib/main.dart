@@ -91,7 +91,7 @@ class EttMobileApp extends StatelessWidget {
       title: 'eTT Mobile',
       debugShowCheckedModeBanner: false,
       theme: KptTheme.light, // tema navy + emas
-      home: const HomeScreen(), // skrin kekal aplikasi
+      home: const LayoutPlaygroundScreen(), // skrin kekal aplikasi
     );
   }
 }
