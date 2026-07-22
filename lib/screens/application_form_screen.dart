@@ -251,6 +251,76 @@ void _resetChoices() {
                   return null;
                 },
               ),
+
+              const SizedBox(height: 14),
+
+Text(
+  'Peraturan eTT: 1 negara + 1 bidang setiap permohonan. '
+  'Anda boleh menyusun sehingga 3 pilihan universiti '
+  'dalam bidang tersebut.',
+  style: TextStyle(
+    fontSize: 12,
+    color: Colors.grey[700],
+  ),
+),
+
+const SizedBox(height: 8),
+
+DropdownButtonFormField<String>(
+  initialValue: _country,
+  isExpanded: true,
+  decoration: const InputDecoration(
+    labelText: 'Negara (satu sahaja)',
+  ),
+  items: [
+    for (final country in _countries)
+      DropdownMenuItem<String>(
+        value: country,
+        child: Text(
+          _countryLabel(country),
+        ),
+      ),
+  ],
+  onChanged: _onCountryChanged,
+  validator: (value) {
+    if (value == null) {
+      return 'Sila pilih negara';
+    }
+
+    return null;
+  },
+),
+
+const SizedBox(height: 14),
+
+DropdownButtonFormField<String>(
+  initialValue:
+      _fields.contains(_fieldOfStudy)
+          ? _fieldOfStudy
+          : null,
+  isExpanded: true,
+  decoration: const InputDecoration(
+    labelText: 'Bidang (satu sahaja)',
+  ),
+  items: [
+    for (final field in _fields)
+      DropdownMenuItem<String>(
+        value: field,
+        child: Text(
+          field,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+  ],
+  onChanged: _onFieldChanged,
+  validator: (value) {
+    if (value == null) {
+      return 'Sila pilih bidang';
+    }
+
+    return null;
+  },
+),
             ],
           ),
         ),
