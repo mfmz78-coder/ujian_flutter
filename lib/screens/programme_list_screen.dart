@@ -1,6 +1,6 @@
 // lib/screens/programme_list_screen.dart
 import 'package:flutter/material.dart';
-
+import 'programme_detail_screen.dart';
 import '../data/sample_programmes.dart';
 import '../widgets/programme_card.dart';
 
