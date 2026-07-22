@@ -67,6 +67,62 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
     super.dispose(); // WAJIB baris TERAKHIR
   }
 
+  List<String> get _countries =>
+    {for (final p in sampleProgrammes) p.country}.toList();
+
+String _countryLabel(String country) => switch (country) {
+      'Egypt' => '🇪🇬 Mesir',
+      'Morocco' => '🇲🇦 Maghribi',
+      _ => country,
+    };
+
+List<String> get _fields => {
+      for (final p in sampleProgrammes)
+        if (p.country == _country) p.fieldOfStudy,
+    }.toList();
+
+List<Programme> get _choiceProgrammes {
+  return sampleProgrammes
+      .where(
+        (p) =>
+            p.country == _country &&
+            p.fieldOfStudy == _fieldOfStudy,
+      )
+      .toList();
+}
+
+void _onCountryChanged(String? value) {
+  if (value == null) return;
+
+  setState(() {
+    _country = value;
+
+    final fields = _fields;
+    _fieldOfStudy = fields.isNotEmpty ? fields.first : '';
+
+    _resetChoices();
+  });
+}
+
+void _onFieldChanged(String? value) {
+  if (value == null) return;
+
+  setState(() {
+    _fieldOfStudy = value;
+    _resetChoices();
+  });
+}
+
+void _resetChoices() {
+  final programmes = _choiceProgrammes;
+
+  _choice1 =
+      programmes.isNotEmpty ? programmes.first.id : null;
+
+  _choice2 = null;
+  _choice3 = null;
+}
+
   void _submitDummy() {
     /* ... kod Latihan 3, buang pada 4.12 ... */
   }
