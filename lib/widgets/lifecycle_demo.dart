@@ -14,9 +14,7 @@ class _LifecycleDemoState extends State<LifecycleDemo> {
   void initState() {
     super.initState();
 
-    debugPrint(
-      '[LifecycleDemo] initState() — dipanggil SEKALI',
-    );
+    debugPrint('[LifecycleDemo] initState() — dipanggil SEKALI');
   }
 
   void _increment() {
@@ -33,9 +31,7 @@ class _LifecycleDemoState extends State<LifecycleDemo> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(
-      '[LifecycleDemo] build() — _count = $_count',
-    );
+    debugPrint('[LifecycleDemo] build() — _count = $_count');
 
     return Card(
       child: Padding(
@@ -45,17 +41,10 @@ class _LifecycleDemoState extends State<LifecycleDemo> {
           children: [
             const Text(
               'Demo Lifecycle',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 12),
-            Text(
-              'Kiraan: $_count',
-              style: const TextStyle(
-                fontSize: 24,
-              ),
-            ),
+            Text('Kiraan: $_count', style: const TextStyle(fontSize: 24)),
             const SizedBox(height: 12),
             GestureDetector(
               onTap: _increment,
@@ -69,16 +58,11 @@ class _LifecycleDemoState extends State<LifecycleDemo> {
                   color: Colors.blue.shade100,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Text(
-                  'Tekan: +1 · Tekan lama: reset',
-                ),
+                child: const Text('Tekan: +1 · Tekan lama: reset'),
               ),
             ),
             const SizedBox(height: 12),
-            FilledButton(
-              onPressed: _increment,
-              child: const Text('Tambah'),
-            ),
+            FilledButton(onPressed: _increment, child: const Text('Tambah')),
           ],
         ),
       ),
@@ -87,9 +71,7 @@ class _LifecycleDemoState extends State<LifecycleDemo> {
 
   @override
   void dispose() {
-    debugPrint(
-      '[LifecycleDemo] dispose() — widget ditutup',
-    );
+    debugPrint('[LifecycleDemo] dispose() — widget ditutup');
 
     super.dispose();
   }
