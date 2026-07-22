@@ -95,6 +95,46 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
               ),
 
               // 👈 4.6 — TAMBAH Emel, Telefon, Ringkasan SELEPAS BARIS INI-------
+              const SizedBox(height: 14),
+
+TextFormField(
+  controller: _emailCtrl,
+  keyboardType: TextInputType.emailAddress,
+  decoration: const InputDecoration(
+    labelText: 'Emel',
+    hintText: 'nama@contoh.com',
+  ),
+  validator: validateEmail,
+),
+
+const SizedBox(height: 14),
+
+TextFormField(
+  controller: _phoneCtrl,
+  keyboardType: TextInputType.phone,
+  decoration: const InputDecoration(
+    labelText: 'No. Telefon',
+    hintText: '0123456789',
+  ),
+  validator: validatePhoneNumber,
+),
+
+const SizedBox(height: 14),
+
+TextFormField(
+  controller: _academicCtrl,
+  decoration: const InputDecoration(
+    labelText: 'Ringkasan Keputusan',
+    hintText: 'Cth: SPM 2025 — 9A',
+  ),
+  validator: (value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Ringkasan keputusan diperlukan';
+    }
+
+    return null;
+  },
+),
             ],
           ),
         ),
