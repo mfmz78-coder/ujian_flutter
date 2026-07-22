@@ -26,7 +26,11 @@ String _formatRm(num value) {
 ///
 /// Struktur: Row [ bendera | Expanded(Column: universiti + bidang) | kos RM ].
 class ProgrammeCard extends StatelessWidget {
-  const ProgrammeCard({super.key, required this.programme, this.onTap});
+  const ProgrammeCard({
+    super.key,
+    required this.programme,
+    this.onTap,
+  });
 
   final Programme programme;
   final VoidCallback? onTap;
@@ -74,10 +78,8 @@ class ProgrammeCard extends StatelessWidget {
                         const SizedBox(height: 2),
                         Text(
                           '${programme.city}, ${programme.countryLabel}',
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                            fontSize: 12,
-                          ),
+                          style:
+                              TextStyle(color: Colors.grey[600], fontSize: 12),
                         ),
                       ],
                     ),
