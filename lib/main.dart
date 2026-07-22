@@ -89,8 +89,8 @@ class EttMobileApp extends StatelessWidget {
     return MaterialApp(
       title: 'eTT Mobile',
       debugShowCheckedModeBanner: false,
-      theme: KptTheme.light,      // tema navy + emas
-      home: const HomeScreen(),   // skrin kekal aplikasi
+      theme: KptTheme.light, // tema navy + emas
+      home: const HomeScreen(), // skrin kekal aplikasi
     );
   }
 }
