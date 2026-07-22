@@ -40,9 +40,18 @@ class _HomeScreenState extends State<HomeScreen> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: KptTheme.navy,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.school_outlined), label: 'Program'),
-          BottomNavigationBarItem(icon: Icon(Icons.assignment_outlined), label: 'Permohonan Saya'),
-          BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Profil'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school_outlined),
+            label: 'Program',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment_outlined),
+            label: 'Permohonan Saya',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: 'Profil',
+          ),
         ],
       ),
 
@@ -85,7 +94,11 @@ class _CountryDrawer extends StatelessWidget {
               children: [
                 Text(
                   'eTT Mobile',
-                  style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: 4),
                 Text(
