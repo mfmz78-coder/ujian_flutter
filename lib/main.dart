@@ -92,6 +92,15 @@ class EttMobileApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: KptTheme.light, // tema navy + emas
       home: const HomeScreen(), // skrin kekal aplikasi
+      onGenerateRoute: (settings) {
+          if (settings.name == '/detail') {
+            final programme = settings.arguments as Programme;
+            return MaterialPageRoute(
+              builder: (_) => ProgrammeDetailScreen(programme: programme),
+            );
+          }
+          return null; // laluan tidak dikenali
+        },
     );
   }
 }
