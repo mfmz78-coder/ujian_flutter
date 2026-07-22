@@ -1,4 +1,3 @@
-// lib/screens/application_form_screen.dart
 import 'package:flutter/material.dart';
 
 import '../models/application.dart';
@@ -14,25 +13,15 @@ class ApplicationFormScreen extends StatefulWidget {
 }
 
 class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
-  void _submitDummy() {
-    final application = Application(
-      id: 'ETT-UJIAN-${DateTime.now().millisecondsSinceEpoch}',
-      fullName: 'Ujian Sahaja',
-      icNumber: '000000000000',
-      email: 'ujian@contoh.my',
-      phoneNumber: '0123456789',
-      academicCategory: EntryCategory.spm,
-      academicSummary: 'Ujian',
-      country: widget.programme.country,
-      fieldOfStudy: widget.programme.fieldOfStudy,
-      universityChoiceIds: [widget.programme.id],
-      status: ApplicationStatus.submitted,
-      submittedAt: DateTime.now(),
-    );
-    Navigator.of(
-      context,
-    ).pop(application); // pulangkan objek ke skrin sebelumnya
-  }
+  // ╔══════════════════════════════════════════════════╗
+  // ║  4.1 — _formKey masuk DI SINI                    ║
+  // ╚══════════════════════════════════════════════════╝
+
+  // ╔══════════════════════════════════════════════════╗
+  // ║  4.2 — Controller masuk DI SINI                  ║
+  // ╚══════════════════════════════════════════════════╝
+
+  void _submitDummy() { /* ... kod Latihan 3, buang pada 4.12 ... */ }
 
   @override
   Widget build(BuildContext context) {
