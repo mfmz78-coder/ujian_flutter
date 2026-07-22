@@ -50,3 +50,36 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Local configuration
+*.local
+config/local.*
+secrets/
+
+# Certificates and private keys
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+AuthKey_*.p8
+
+# Service account and credential files
+service-account*.json
+service_account*.json
+firebase-adminsdk-*.json
+credentials*.json
+secrets*.json
+
+# Android signing — additional root protection
+**/key.properties
+**/*.jks
+**/*.keystore
+
+# Local databases
+*.sqlite
+*.sqlite3
