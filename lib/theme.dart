@@ -1,6 +1,6 @@
 // ══════════════════════════════════════════════════════════════════
 // FAIL STARTER — salin ke:  lib/theme.dart
-// Tema warna KPT (navy + emas) — KptTheme.navy / KptTheme.gold.
+// Tema warna KPT (navy + emas).
 // (Jangan taip dari kosong — salin terus ke projek anda.)
 // ══════════════════════════════════════════════════════════════════
 
@@ -54,17 +54,8 @@ class KptTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-      ),
-
-      textTheme: const TextTheme(
-        titleLarge: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: KptTheme.navy,
-        ),
-        titleMedium: TextStyle(
-          fontWeight: FontWeight.w600,
-          color: KptTheme.navy,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
         ),
       ),
     );
