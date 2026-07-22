@@ -308,6 +308,53 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
                   return null;
                 },
               ),
+              const SizedBox(height: 14),
+
+_ChoiceDropdown(
+  label: 'Pilihan 1 (wajib)',
+  value: _choice1,
+  programmes: choiceProgrammes,
+  onChanged: (value) {
+    setState(() {
+      _choice1 = value;
+    });
+  },
+  validator: (value) {
+    if (value == null) {
+      return 'Pilihan 1 diperlukan';
+    }
+
+    return null;
+  },
+),
+
+const SizedBox(height: 14),
+
+_ChoiceDropdown(
+  label: 'Pilihan 2 (pilihan)',
+  value: _choice2,
+  programmes: choiceProgrammes,
+  includeNone: true,
+  onChanged: (value) {
+    setState(() {
+      _choice2 = value;
+    });
+  },
+),
+
+const SizedBox(height: 14),
+
+_ChoiceDropdown(
+  label: 'Pilihan 3 (pilihan)',
+  value: _choice3,
+  programmes: choiceProgrammes,
+  includeNone: true,
+  onChanged: (value) {
+    setState(() {
+      _choice3 = value;
+    });
+  },
+),
             ],
           ),
         ),
