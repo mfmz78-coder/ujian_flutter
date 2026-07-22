@@ -441,15 +441,15 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
                     });
                   },
                 ),
-                const SizedBox(height: 24),
+              const SizedBox(height: 24),
 
-FilledButton.icon(
-  onPressed: _submit,
-  icon: const Icon(Icons.send),
-  label: const Text('Hantar Permohonan'),
-),
+              FilledButton.icon(
+                onPressed: _submit,
+                icon: const Icon(Icons.send),
+                label: const Text('Hantar Permohonan'),
+              ),
 
-const SizedBox(height: 24),
+              const SizedBox(height: 24),
             ],
           ),
         ),
