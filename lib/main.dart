@@ -1,52 +1,8 @@
-// import 'package:flutter/material.dart';
-// import 'data/sample_programmes.dart';
-// import 'theme.dart';
-// // import 'widgets/programme_card.dart';
-// import 'models/programme.dart';
-
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       theme: KptTheme.light,
-//       home: Scaffold(
-//         appBar: AppBar(title: const Text('eTT Mobile')),
-//         body: Center(
-//           child: ProgrammeSummaryRow(programme: sampleProgrammes[6]),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class ProgrammeSummaryRow extends StatelessWidget {
-//   const ProgrammeSummaryRow({super.key, required this.programme});
-
-//   final Programme programme;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(16),
-//       child: Row(
-//         children: [
-//           Text(
-//             programme.universityName,
-//             style: const TextStyle(fontWeight: FontWeight.bold),
-//           ),
-//           Text(' — ${programme.city}, ${programme.countryLabel}'),
-//         ],
-//       ),
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+import 'models/programme.dart';
+import 'data/sample_programmes.dart';
+import 'screens/home_screen.dart';
+import 'theme.dart';
 
 class SavedProgrammeCounter extends StatefulWidget {
   const SavedProgrammeCounter({super.key});
@@ -95,21 +51,10 @@ class _SavedProgrammeCounterState extends State<SavedProgrammeCounter> {
   }
 }
 
-
-// lib/main.dart — STATUS AKHIR HARI 2
-import 'package:flutter/material.dart';
-import 'models/programme.dart';
-import 'data/sample_programmes.dart';
-
-// ...
-import 'screens/home_screen.dart';
-import 'theme.dart';
-
 void main() {
   runApp(const EttMobileApp());
 }
 
-// ── 1.1 — Ringkasan program TANPA Expanded (akan overflow) ──────
 class ProgrammeSummaryRow extends StatelessWidget {
   const ProgrammeSummaryRow({super.key, required this.programme});
 
@@ -119,7 +64,7 @@ class ProgrammeSummaryRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-            child: Row(
+      child: Row(
         children: [
           Expanded(
             child: Text(
