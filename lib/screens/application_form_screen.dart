@@ -259,13 +259,7 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
                   labelText: 'Ringkasan Keputusan',
                   hintText: 'Cth: SPM 2025 — 9A',
                 ),
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return 'Ringkasan keputusan diperlukan';
-                  }
-
-                  return null;
-                },
+                validator: validateAcademicSummary,
               ),
 
               const SizedBox(height: 24),
