@@ -15,10 +15,7 @@ class ProgrammeIntakeTile extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       child: ListTile(
         leading: const Icon(Icons.school_outlined, color: KptTheme.navy),
-        title: Text(
-          programme.universityName,
-          overflow: TextOverflow.ellipsis,
-        ),
+        title: Text(programme.universityName, overflow: TextOverflow.ellipsis),
         subtitle: Text('${programme.fieldOfStudy} · ${programme.intakeMonth}'),
         trailing: Text(
           '${programme.quotaSeats} tempat',
