@@ -119,74 +119,64 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
   }
 
   void _submit() {
-  final isValid = _formKey.currentState?.validate() ?? false;
+    final isValid = _formKey.currentState?.validate() ?? false;
 
-  if (!isValid) {
-    return;
-  }
-
-  if (_academicCategory == null) {
-    _showSnackBar(
-      'Sila pilih kategori sijil SPM atau STAM.',
-    );
-    return;
-  }
-
-  if (_choice1 == null) {
-    _showSnackBar(
-      'Sila pilih sekurang-kurangnya satu universiti.',
-    );
-    return;
-  }
-
-  // Kumpulkan pilihan universiti sambil membuang
-  // nilai null dan pilihan yang berulang.
-  final choices = <String>[];
-
-  for (final id in [
-    _choice1,
-    _choice2,
-    _choice3,
-  ]) {
-    if (id != null && !choices.contains(id)) {
-      choices.add(id);
+    if (!isValid) {
+      return;
     }
+
+    if (_academicCategory == null) {
+      _showSnackBar('Sila pilih kategori sijil SPM atau STAM.');
+      return;
+    }
+
+    if (_choice1 == null) {
+      _showSnackBar('Sila pilih sekurang-kurangnya satu universiti.');
+      return;
+    }
+
+    // Kumpulkan pilihan universiti sambil membuang
+    // nilai null dan pilihan yang berulang.
+    final choices = <String>[];
+
+    for (final id in [_choice1, _choice2, _choice3]) {
+      if (id != null && !choices.contains(id)) {
+        choices.add(id);
+      }
+    }
+
+    // Ambil dokumen yang telah ditanda sahaja.
+    final selectedDocuments = _documents.entries
+        .where((entry) => entry.value)
+        .map((entry) => entry.key)
+        .toList();
+
+    final now = DateTime.now();
+
+    final application = Application(
+      id: 'ETT-${now.year}-${now.millisecondsSinceEpoch}',
+      fullName: _nameCtrl.text.trim(),
+      icNumber: _icCtrl.text.trim(),
+      email: _emailCtrl.text.trim(),
+      phoneNumber: _phoneCtrl.text.trim(),
+      academicCategory: _academicCategory!,
+      academicSummary: _academicCtrl.text.trim(),
+      country: _country,
+      fieldOfStudy: _fieldOfStudy,
+      universityChoiceIds: choices,
+      uploadedDocuments: selectedDocuments,
+      status: ApplicationStatus.submitted,
+      submittedAt: now,
+    );
+
+    Navigator.of(context).pop(application);
   }
 
-  // Ambil dokumen yang telah ditanda sahaja.
-  final selectedDocuments = _documents.entries
-      .where((entry) => entry.value)
-      .map((entry) => entry.key)
-      .toList();
-
-  final now = DateTime.now();
-
-  final application = Application(
-    id: 'ETT-${now.year}-${now.millisecondsSinceEpoch}',
-    fullName: _nameCtrl.text.trim(),
-    icNumber: _icCtrl.text.trim(),
-    email: _emailCtrl.text.trim(),
-    phoneNumber: _phoneCtrl.text.trim(),
-    academicCategory: _academicCategory!,
-    academicSummary: _academicCtrl.text.trim(),
-    country: _country,
-    fieldOfStudy: _fieldOfStudy,
-    universityChoiceIds: choices,
-    uploadedDocuments: selectedDocuments,
-    status: ApplicationStatus.submitted,
-    submittedAt: now,
-  );
-
-  Navigator.of(context).pop(application);
-}
-
-void _showSnackBar(String message) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(message),
-    ),
-  );
-}
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(message)));
+  }
 
   @override
   Widget build(BuildContext context) {
