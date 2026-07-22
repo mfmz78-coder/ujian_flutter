@@ -61,6 +61,10 @@ class _ProgrammeDetailScreenState extends State<ProgrammeDetailScreen> {
 
             const SizedBox(height: 24),
 
+            const LifecycleDemo(),
+
+const SizedBox(height: 24),
+
             FilledButton.icon(
               onPressed: _sudahMohon ? null : _mohon,
               icon: Icon(_sudahMohon ? Icons.check : Icons.app_registration),
