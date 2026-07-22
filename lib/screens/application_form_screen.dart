@@ -42,6 +42,19 @@ String? _choice1;
 String? _choice2;
 String? _choice3;
 
+@override
+void initState() {
+  super.initState();
+
+  _country = widget.programme.country;
+  _fieldOfStudy = widget.programme.fieldOfStudy;
+  _choice1 = widget.programme.id;
+
+  for (final document in ettDocumentChecklist) {
+    _documents[document] = false;
+  }
+}
+
   // 👈 4.3 — TAMBAH dispose() SELEPAS BARIS INI
   @override
   void dispose() {
