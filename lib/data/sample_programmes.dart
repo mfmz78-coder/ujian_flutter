@@ -1,12 +1,10 @@
 // ══════════════════════════════════════════════════════════════════
 // FAIL STARTER — salin ke:  lib/data/sample_programmes.dart
-// 8 tawaran pengajian eTT contoh (sampleProgrammes).
+// 8 tawaran pengajian eTT contoh.
 // (Jangan taip dari kosong — salin terus ke projek anda.)
 // ══════════════════════════════════════════════════════════════════
 
-import '../models/programme.dart'; // atau '../models/programme.dart' bergantung lokasi
-import '../data/sample_programmes.dart';
-import '../theme.dart';
+import '../models/programme.dart';
 
 /// Data contoh 8 tawaran pengajian eTT (Mesir & Maghribi).
 ///
