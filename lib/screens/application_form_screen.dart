@@ -73,6 +73,23 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
             ),
 
             // 👈 4.5 — TAMBAH medan IC SELEPAS BARIS INI
+                        const SizedBox(height: 14),
+
+            // ── 4.5 — No. Kad Pengenalan ──────────────
+            TextFormField(
+              controller: _icCtrl,
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9-]')),
+              ],
+              decoration: const InputDecoration(
+                labelText: 'No. Kad Pengenalan',
+                hintText: '051231-14-5678',
+              ),
+              validator: validateIcNumber,
+            ),
+
+            // 👈 4.6 — TAMBAH Emel, Telefon, Ringkasan SELEPAS BARIS INI
             ],
           ),
         ),
