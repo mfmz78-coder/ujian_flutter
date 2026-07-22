@@ -9,19 +9,12 @@ class ProgrammeGridScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tawaran Pengajian eTT'),
-      ),
+      appBar: AppBar(title: const Text('Tawaran Pengajian eTT')),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(
-              12,
-              12,
-              12,
-              0,
-            ),
+            padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
             child: Text(
               'Tawaran Pengajian eTT (Grid)',
               style: Theme.of(context).textTheme.titleLarge,
@@ -33,13 +26,12 @@ class ProgrammeGridScreen extends StatelessWidget {
           Expanded(
             child: GridView.builder(
               padding: const EdgeInsets.all(12),
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: 0.95,
-                  ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 0.95,
+              ),
               itemCount: sampleProgrammes.length,
               itemBuilder: (context, index) {
                 final programme = sampleProgrammes[index];
@@ -57,9 +49,7 @@ class ProgrammeGridScreen extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           programme.universityName,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),
