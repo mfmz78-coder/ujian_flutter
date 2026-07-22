@@ -4,7 +4,7 @@
 // (Jangan taip dari kosong — salin terus ke projek anda.)
 // ══════════════════════════════════════════════════════════════════
 
-import '../models/programme.dart';   // atau '../models/programme.dart' bergantung lokasi
+import '../models/programme.dart'; // atau '../models/programme.dart' bergantung lokasi
 import '../data/sample_programmes.dart';
 import '../theme.dart';
 
