@@ -159,6 +159,47 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
                   return null;
                 },
               ),
+
+              const SizedBox(height: 24),
+
+const Text(
+  'Kelayakan & Pilihan Pengajian',
+  style: TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  ),
+),
+
+const SizedBox(height: 16),
+
+DropdownButtonFormField<EntryCategory>(
+  initialValue: _academicCategory,
+  decoration: const InputDecoration(
+    labelText: 'Kategori Sijil',
+  ),
+  items: const [
+    DropdownMenuItem<EntryCategory>(
+      value: EntryCategory.spm,
+      child: Text('SPM'),
+    ),
+    DropdownMenuItem<EntryCategory>(
+      value: EntryCategory.stam,
+      child: Text('STAM'),
+    ),
+  ],
+  onChanged: (value) {
+    setState(() {
+      _academicCategory = value;
+    });
+  },
+  validator: (value) {
+    if (value == null) {
+      return 'Sila pilih kategori sijil';
+    }
+
+    return null;
+  },
+),
             ],
           ),
         ),
