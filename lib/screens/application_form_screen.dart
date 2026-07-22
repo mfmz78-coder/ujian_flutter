@@ -33,27 +33,27 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
   final _academicCtrl = TextEditingController();
   final Map<String, bool> _documents = {};
 
-EntryCategory? _academicCategory;
+  EntryCategory? _academicCategory;
 
-late String _country;
-late String _fieldOfStudy;
+  late String _country;
+  late String _fieldOfStudy;
 
-String? _choice1;
-String? _choice2;
-String? _choice3;
+  String? _choice1;
+  String? _choice2;
+  String? _choice3;
 
-@override
-void initState() {
-  super.initState();
+  @override
+  void initState() {
+    super.initState();
 
-  _country = widget.programme.country;
-  _fieldOfStudy = widget.programme.fieldOfStudy;
-  _choice1 = widget.programme.id;
+    _country = widget.programme.country;
+    _fieldOfStudy = widget.programme.fieldOfStudy;
+    _choice1 = widget.programme.id;
 
-  for (final document in ettDocumentChecklist) {
-    _documents[document] = false;
+    for (final document in ettDocumentChecklist) {
+      _documents[document] = false;
+    }
   }
-}
 
   // 👈 4.3 — TAMBAH dispose() SELEPAS BARIS INI
   @override
