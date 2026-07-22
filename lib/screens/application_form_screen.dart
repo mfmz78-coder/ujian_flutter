@@ -124,6 +124,7 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final choiceProgrammes = _choiceProgrammes;
     return Scaffold(
       appBar: AppBar(title: const Text('Borang Permohonan eTT')),
       body: Form(
@@ -311,6 +312,53 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _ChoiceDropdown extends StatelessWidget {
+  const _ChoiceDropdown({
+    required this.label,
+    required this.value,
+    required this.programmes,
+    required this.onChanged,
+    this.validator,
+    this.includeNone = false,
+  });
+
+  final String label;
+  final String? value;
+  final List<Programme> programmes;
+  final ValueChanged<String?> onChanged;
+  final String? Function(String?)? validator;
+  final bool includeNone;
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonFormField<String>(
+      initialValue: value,
+      isExpanded: true,
+      decoration: InputDecoration(
+        labelText: label,
+      ),
+      items: [
+        if (includeNone)
+          const DropdownMenuItem<String>(
+            value: null,
+            child: Text('Tiada'),
+          ),
+        for (final programme in programmes)
+          DropdownMenuItem<String>(
+            value: programme.id,
+            child: Text(
+              '${programme.universityName} '
+              '(${programme.city})',
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+      ],
+      onChanged: onChanged,
+      validator: validator,
     );
   }
 }
