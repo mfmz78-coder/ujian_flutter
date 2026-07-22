@@ -48,52 +48,52 @@
 //   }
 // }
 
-// class SavedProgrammeCounter extends StatefulWidget {
-//   const SavedProgrammeCounter({super.key});
+class SavedProgrammeCounter extends StatefulWidget {
+  const SavedProgrammeCounter({super.key});
 
-//   @override
-//   State<SavedProgrammeCounter> createState() => _SavedProgrammeCounterState();
-// }
+  @override
+  State<SavedProgrammeCounter> createState() => _SavedProgrammeCounterState();
+}
 
-// class _SavedProgrammeCounterState extends State<SavedProgrammeCounter> {
-//   int _savedCount = 0;
+class _SavedProgrammeCounterState extends State<SavedProgrammeCounter> {
+  int _savedCount = 0;
 
-//   void _addProgramme() {
-//     setState(() {
-//       _savedCount++;
-//     });
-//   }
+  void _addProgramme() {
+    setState(() {
+      _savedCount++;
+    });
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       padding: const EdgeInsets.all(16),
-//       margin: const EdgeInsets.symmetric(horizontal: 12),
-//       decoration: BoxDecoration(
-//         color: Colors.blueGrey,
-//         borderRadius: BorderRadius.circular(20),
-//       ),
-//       child: Column(
-//         mainAxisSize: MainAxisSize.min,
-//         children: [
-//           Text(
-//             'Program disimpan: $_savedCount',
-//             style: const TextStyle(
-//               color: Colors.white,
-//               fontSize: 18,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//           const SizedBox(height: 12),
-//           ElevatedButton(
-//             onPressed: _addProgramme,
-//             child: const Text('+ Simpan Program'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        color: Colors.blueGrey,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Program disimpan: $_savedCount',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 12),
+          ElevatedButton(
+            onPressed: _addProgramme,
+            child: const Text('+ Simpan Program'),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 
 // lib/main.dart — STATUS AKHIR HARI 2
