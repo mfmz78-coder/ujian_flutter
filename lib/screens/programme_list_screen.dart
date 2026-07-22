@@ -18,12 +18,12 @@ class ProgrammeListScreen extends StatelessWidget {
         return ProgrammeCard(
           programme: p,
           onTap: index == 0
-            ? () => Navigator.of(context).pushNamed('/detail', arguments: p)
-            : () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => ProgrammeDetailScreen(programme: p),
-              ),
-            ),
+              ? () => Navigator.of(context).pushNamed('/detail', arguments: p)
+              : () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => ProgrammeDetailScreen(programme: p),
+                  ),
+                ),
         );
       },
     );
