@@ -1,7 +1,8 @@
 // lib/screens/programme_detail_screen.dart
 import 'package:flutter/material.dart';
-
+import 'application_form_screen.dart';
 import '../models/programme.dart';
+
 
 class ProgrammeDetailScreen extends StatefulWidget {
   const ProgrammeDetailScreen({super.key, required this.programme});
@@ -10,16 +11,16 @@ class ProgrammeDetailScreen extends StatefulWidget {
 
   @override
   State<ProgrammeDetailScreen> createState() => _ProgrammeDetailScreenState();
-  
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(programme.universityName)),
-      body: Center(
-        child: Text('${programme.city}, ${programme.countryLabel}'),
-      ),
-    );
-  }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     appBar: AppBar(title: Text(programme.universityName)),
+  //     body: Center(
+  //       child: Text('${programme.city}, ${programme.countryLabel}'),
+  //     ),
+  //   );
+  // }
 }
 
 
