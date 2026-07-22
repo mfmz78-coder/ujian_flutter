@@ -15,14 +15,14 @@ class ProgrammeListScreen extends StatelessWidget {
       itemBuilder: (context, index) {
         final p = sampleProgrammes[index];
         print('Kad dibina untuk: ${p.universityName}');
-                      return ProgrammeCard(
-                programme: p,
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (_) => ProgrammeDetailScreen(programme: p),
-                  ),
-                ),
-              );
+        return ProgrammeCard(
+          programme: p,
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => ProgrammeDetailScreen(programme: p),
+            ),
+          ),
+        );
       },
     );
   }
