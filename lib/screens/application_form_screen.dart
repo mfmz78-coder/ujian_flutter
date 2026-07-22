@@ -29,7 +29,9 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
       status: ApplicationStatus.submitted,
       submittedAt: DateTime.now(),
     );
-    Navigator.of(context).pop(application); // pulangkan objek ke skrin sebelumnya
+    Navigator.of(
+      context,
+    ).pop(application); // pulangkan objek ke skrin sebelumnya
   }
 
   @override
