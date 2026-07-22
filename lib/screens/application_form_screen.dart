@@ -31,6 +31,16 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
   final _emailCtrl = TextEditingController();
   final _phoneCtrl = TextEditingController();
   final _academicCtrl = TextEditingController();
+  final Map<String, bool> _documents = {};
+
+EntryCategory? _academicCategory;
+
+late String _country;
+late String _fieldOfStudy;
+
+String? _choice1;
+String? _choice2;
+String? _choice3;
 
   // 👈 4.3 — TAMBAH dispose() SELEPAS BARIS INI
   @override
