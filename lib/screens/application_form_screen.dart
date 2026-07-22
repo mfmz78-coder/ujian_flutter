@@ -355,6 +355,42 @@ class _ApplicationFormScreenState extends State<ApplicationFormScreen> {
                   });
                 },
               ),
+              const SizedBox(height: 24),
+
+const Text(
+  'Senarai Semak Dokumen',
+  style: TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  ),
+),
+
+const SizedBox(height: 4),
+
+Text(
+  'Dalam sistem sebenar, dokumen dimuat naik '
+  'selepas status LAYAK.',
+  style: TextStyle(
+    fontSize: 12,
+    color: Colors.grey[700],
+  ),
+),
+
+const SizedBox(height: 8),
+
+for (final document in ettDocumentChecklist)
+  CheckboxListTile(
+    dense: true,
+    contentPadding: EdgeInsets.zero,
+    controlAffinity: ListTileControlAffinity.leading,
+    title: Text(document),
+    value: _documents[document] ?? false,
+    onChanged: (value) {
+      setState(() {
+        _documents[document] = value ?? false;
+      });
+    },
+  ),
             ],
           ),
         ),
