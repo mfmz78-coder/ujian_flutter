@@ -47,9 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       // 👈 5.3 — TAMBAH drawer: SELEPAS bottomNavigationBar
-            appBar: AppBar(title: Text('eTT Mobile · ${_titles[_index]}')),
-      drawer: _CountryDrawer(onSelect: _selectCountry),
-      body: _screens[_index],
+      //       appBar: AppBar(title: Text('eTT Mobile · ${_titles[_index]}')),
+      // drawer: _CountryDrawer(onSelect: _selectCountry),
+      // body: _screens[_index],
     );
   }
 }
