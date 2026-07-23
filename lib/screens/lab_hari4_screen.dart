@@ -23,6 +23,9 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
   List<Programme> _programmes = [];
 
   Future<void> _load() async {
+
+    print('refresh!');
+    
     setState(() {
       _state = LoadState.loading;
     });
