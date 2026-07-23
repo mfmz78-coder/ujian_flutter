@@ -30,8 +30,6 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
     try {
       final data = await _service.fetchProgrammes();
 
-      throw Exception('ujian');
-
       setState(() {
         _programmes = data;
         _state = LoadState.loaded;
