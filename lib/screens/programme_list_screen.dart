@@ -10,10 +10,7 @@ class ProgrammeListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: const EdgeInsets.only(
-        top: 8,
-        bottom: 16,
-      ),
+      padding: const EdgeInsets.only(top: 8, bottom: 16),
 
       // Gunakan jumlah sebenar data.
       itemCount: sampleProgrammes.length,
@@ -28,17 +25,15 @@ class ProgrammeListScreen extends StatelessWidget {
           // untuk eksperimen Latihan 2 Hari 3.
           onTap: index == 0
               ? () {
-                  Navigator.of(context).pushNamed(
-                    '/detail',
-                    arguments: programme,
-                  );
+                  Navigator.of(
+                    context,
+                  ).pushNamed('/detail', arguments: programme);
                 }
               : () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (_) => ProgrammeDetailScreen(
-                        programme: programme,
-                      ),
+                      builder: (_) =>
+                          ProgrammeDetailScreen(programme: programme),
                     ),
                   );
                 },
