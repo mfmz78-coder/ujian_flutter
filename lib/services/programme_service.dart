@@ -42,5 +42,26 @@ class ProgrammeService {
     return sampleProgrammes;
   }
 
+  Future<bool> submitApplication(
+  Application application,
+) async {
+  try {
+    final response = await _client
+        .post(
+          Uri.parse('$_baseUrl/applications'),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonEncode(application.toJson()),
+        )
+        .timeout(const Duration(seconds: 8));
+
+    return response.statusCode == 200 ||
+        response.statusCode == 201;
+  } catch (_) {
+    return false;
+  }
+}
+
   void dispose() => _client.close();
 }
