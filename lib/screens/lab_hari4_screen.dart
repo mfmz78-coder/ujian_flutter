@@ -89,7 +89,17 @@ void dispose() {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Lab Hari 4 — Tawaran eTT (API)')),
+      appBar: AppBar(
+  title: const Text(
+    'Lab Hari 4 — Tawaran eTT (API)',
+  ),
+  actions: [
+    IconButton(
+      onPressed: _hantarContohPermohonan,
+      icon: const Icon(Icons.send),
+    ),
+  ],
+),
       body: _buildBody(),
     );
   }
