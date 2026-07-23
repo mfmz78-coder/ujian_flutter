@@ -54,4 +54,27 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
       body: _buildBody(),
     );
   }
+
+
+  Widget _buildBody() {
+  switch (_state) {
+    case LoadState.idle:
+    case LoadState.loading:
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+
+    case LoadState.error:
+      return const Center(
+        child: Text('Ralat'),
+      );
+
+    case LoadState.loaded:
+      return Center(
+        child: Text(
+          '${_programmes.length} program dimuat',
+        ),
+      );
+  }
+}
 }
