@@ -22,6 +22,25 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
   LoadState _state = LoadState.idle;
   List<Programme> _programmes = [];
 
+  Future<void> _load() async {
+  setState(() {
+    _state = LoadState.loading;
+  });
+
+  try {
+    final data = await _service.fetchProgrammes();
+
+    setState(() {
+      _programmes = data;
+      _state = LoadState.loaded;
+    });
+  } catch (_) {
+    setState(() {
+      _state = LoadState.error;
+    });
+  }
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
