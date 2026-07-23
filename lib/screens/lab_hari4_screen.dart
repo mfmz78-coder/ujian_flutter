@@ -62,7 +62,27 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
         return const Center(child: CircularProgressIndicator());
 
       case LoadState.error:
-        return const Center(child: Text('Ralat'));
+  return Center(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(
+          Icons.wifi_off,
+          size: 48,
+          color: Colors.grey,
+        ),
+        const SizedBox(height: 12),
+        const Text(
+          'Gagal memuat data program.',
+        ),
+        const SizedBox(height: 12),
+        FilledButton(
+          onPressed: _load,
+          child: const Text('Cuba Lagi'),
+        ),
+      ],
+    ),
+  );
 
       case LoadState.loaded:
         return Center(child: Text('${_programmes.length} program dimuat'));
