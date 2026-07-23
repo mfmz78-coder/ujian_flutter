@@ -26,6 +26,9 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
 
   // State Latihan 5 akan ditambah di sini.
 
+  LoadState _state = LoadState.idle;
+List<Programme> _programmes = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
