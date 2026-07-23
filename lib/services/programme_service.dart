@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-
+import '../data/sample_programmes.dart';
 import '../models/programme.dart';
 
 class ProgrammeService {
@@ -32,9 +32,9 @@ class ProgrammeService {
           .toList();
     }
 
-    return [];
+    return _fallback();
   } catch (_) {
-    return [];
+    return _fallback();
   }
 }
 
