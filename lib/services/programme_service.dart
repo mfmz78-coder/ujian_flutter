@@ -14,21 +14,14 @@ class ProgrammeService {
 
   // ── 4.1 — GET paling bare, cetak sahaja ───────────────
   Future<List<Programme>> fetchProgrammes() async {
-  final response = await _client.get(
-    Uri.parse(_endpoint),
-  );
+    final response = await _client.get(Uri.parse(_endpoint));
 
-  final List<dynamic> data =
-      jsonDecode(response.body) as List<dynamic>;
+    final List<dynamic> data = jsonDecode(response.body) as List<dynamic>;
 
-  return data
-      .map(
-        (e) => Programme.fromJson(
-          e as Map<String, dynamic>,
-        ),
-      )
-      .toList();
-}
+    return data
+        .map((e) => Programme.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
 
   void dispose() => _client.close();
 }
