@@ -76,27 +76,25 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
         );
 
       case LoadState.loaded:
-  return RefreshIndicator(
-    onRefresh: _load,
-    child: ListView.builder(
-      padding: const EdgeInsets.only(bottom: 16),
-      itemCount: _programmes.length,
-      itemBuilder: (context, index) {
-        final p = _programmes[index];
+        return RefreshIndicator(
+          onRefresh: _load,
+          child: ListView.builder(
+            padding: const EdgeInsets.only(bottom: 16),
+            itemCount: _programmes.length,
+            itemBuilder: (context, index) {
+              final p = _programmes[index];
 
-        return ProgrammeCard(
-          programme: p,
-          onTap: () => Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (_) => ProgrammeDetailScreen(
+              return ProgrammeCard(
                 programme: p,
-              ),
-            ),
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => ProgrammeDetailScreen(programme: p),
+                  ),
+                ),
+              );
+            },
           ),
         );
-      },
-    ),
-  );
     }
   }
 }
