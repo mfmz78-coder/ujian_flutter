@@ -5,6 +5,15 @@ import '../services/programme_service.dart';
 import '../widgets/programme_card.dart';
 import 'programme_detail_screen.dart';
 
+
+enum LoadState {
+  idle,
+  loading,
+  loaded,
+  error,
+}
+
+
 class LabHari4Screen extends StatefulWidget {
   const LabHari4Screen({super.key});
 
