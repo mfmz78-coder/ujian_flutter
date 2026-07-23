@@ -66,5 +66,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
+</dict>
+
+<key>NSLocalNetworkUsageDescription</key>
+<string>Aplikasi latihan ini menghantar data permohonan ke JSON Server pada Mac.</string>
 </dict>
 </plist>
