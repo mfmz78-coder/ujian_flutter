@@ -32,8 +32,15 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
 
       _programmes = data;
       _state = LoadState.loaded;
+      // ignore: avoid_print
+print(
+  '_state = $_state, '
+  '${_programmes.length} rekod',
+);
+      
     } catch (_) {
       setState(() {
+
         _state = LoadState.error;
       });
     }
