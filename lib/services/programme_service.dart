@@ -13,6 +13,8 @@ class ProgrammeService {
   static const String _endpoint =
       'https://raw.githubusercontent.com/mfmz78-coder/ujian_flutter/main/mock-api/programmes.json';
 
+      static const String _baseUrl = 'http://localhost:3001';
+
   // ── 4.1 — GET paling bare, cetak sahaja ───────────────
   Future<List<Programme>> fetchProgrammes() async {
     try {
