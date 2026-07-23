@@ -48,10 +48,14 @@ void initState() {
 }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Lab Hari 4 — Tawaran eTT (API)')),
-      body: const Center(child: Text('Belum sedia')),
-    );
-  }
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: const Text(
+        'Lab Hari 4 — Tawaran eTT (API)',
+      ),
+    ),
+    body: _buildBody(),
+  );
+}
 }
