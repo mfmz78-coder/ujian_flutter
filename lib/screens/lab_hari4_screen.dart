@@ -24,8 +24,6 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
 
   Future<void> _load() async {
 
-    print('refresh!');
-    
     setState(() {
       _state = LoadState.loading;
     });
