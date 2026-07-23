@@ -14,37 +14,30 @@ class ProgrammeService {
 
   // ── 4.1 — GET paling bare, cetak sahaja ───────────────
   Future<List<Programme>> fetchProgrammes() async {
-  try {
-    final response = await _client
-        .get(Uri.parse(_endpoint))
-        .timeout(const Duration(seconds: 8));
+    try {
+      final response = await _client
+          .get(Uri.parse(_endpoint))
+          .timeout(const Duration(seconds: 8));
 
-    if (response.statusCode == 200) {
-      final List<dynamic> data =
-          jsonDecode(response.body) as List<dynamic>;
+      if (response.statusCode == 200) {
+        final List<dynamic> data = jsonDecode(response.body) as List<dynamic>;
 
-      return data
-          .map(
-            (e) => Programme.fromJson(
-              e as Map<String, dynamic>,
-            ),
-          )
-          .toList();
+        return data
+            .map((e) => Programme.fromJson(e as Map<String, dynamic>))
+            .toList();
+      }
+      // print('status: ${response.statusCode}');
+      return _fallback();
+    } catch (_) {
+      return _fallback();
     }
-    // print('status: ${response.statusCode}');
-    return _fallback();
-  } catch (_) {
-    return _fallback();
   }
-}
 
-Future<List<Programme>> _fallback() async {
-  await Future.delayed(
-    const Duration(milliseconds: 600),
-  );
+  Future<List<Programme>> _fallback() async {
+    await Future.delayed(const Duration(milliseconds: 600));
 
-  return sampleProgrammes;
-}
+    return sampleProgrammes;
+  }
 
   void dispose() => _client.close();
 }
