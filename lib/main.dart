@@ -3,6 +3,7 @@ import 'models/programme.dart';
 import 'screens/home_screen.dart';
 import 'screens/programme_detail_screen.dart';
 import 'theme.dart';
+import 'services/programme_service.dart';
 
 class SavedProgrammeCounter extends StatefulWidget {
   const SavedProgrammeCounter({super.key});
@@ -51,8 +52,12 @@ class _SavedProgrammeCounterState extends State<SavedProgrammeCounter> {
   }
 }
 
-void main() {
-  runApp(const EttMobileApp());
+Future<void> main() async {
+  final service = ProgrammeService();
+
+  await service.fetchProgrammes();
+
+  service.dispose();
 }
 
 class ProgrammeSummaryRow extends StatelessWidget {
