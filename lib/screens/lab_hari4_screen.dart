@@ -43,36 +43,35 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
   }
 
   Future<void> _hantarContohPermohonan() async {
-  final contoh = Application(
-    id: 'LAB-${DateTime.now().millisecondsSinceEpoch}',
-    fullName: 'Pelajar Contoh',
-    icNumber: '000000-00-0000',
-    email: 'pelajar@example.com',
-    phoneNumber: '0123456789',
-    academicCategory: EntryCategory.spm,
-    academicSummary: 'SPM 2025 — 8A',
-    country: 'Egypt',
-    fieldOfStudy: 'Perubatan (Medicine)',
-    universityChoiceIds: const ['ETT-001'],
-  );
+    final contoh = Application(
+      id: 'LAB-${DateTime.now().millisecondsSinceEpoch}',
+      fullName: 'Pelajar Contoh',
+      icNumber: '000000-00-0000',
+      email: 'pelajar@example.com',
+      phoneNumber: '0123456789',
+      academicCategory: EntryCategory.spm,
+      academicSummary: 'SPM 2025 — 8A',
+      country: 'Egypt',
+      fieldOfStudy: 'Perubatan (Medicine)',
+      universityChoiceIds: const ['ETT-001'],
+    );
 
-  final berjaya =
-      await _service.submitApplication(contoh);
+    final berjaya = await _service.submitApplication(contoh);
 
-  if (!mounted) {
-    return;
-  }
+    if (!mounted) {
+      return;
+    }
 
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: Text(
-        berjaya
-            ? 'Permohonan contoh berjaya dihantar'
-            : 'Gagal hantar permohonan contoh',
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          berjaya
+              ? 'Permohonan contoh berjaya dihantar'
+              : 'Gagal hantar permohonan contoh',
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   @override
   void initState() {
@@ -81,25 +80,23 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
   }
 
   @override
-void dispose() {
-  _service.dispose();
-  super.dispose();
-}
+  void dispose() {
+    _service.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-  title: const Text(
-    'Lab Hari 4 — Tawaran eTT (API)',
-  ),
-  actions: [
-    IconButton(
-      onPressed: _hantarContohPermohonan,
-      icon: const Icon(Icons.send),
-    ),
-  ],
-),
+        title: const Text('Lab Hari 4 — Tawaran eTT (API)'),
+        actions: [
+          IconButton(
+            onPressed: _hantarContohPermohonan,
+            icon: const Icon(Icons.send),
+          ),
+        ],
+      ),
       body: _buildBody(),
     );
   }
