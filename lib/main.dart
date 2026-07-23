@@ -90,7 +90,7 @@ class EttMobileApp extends StatelessWidget {
       title: 'eTT Mobile',
       debugShowCheckedModeBanner: false,
       theme: KptTheme.light, // tema navy + emas
-      home: const HomeScreen(), // skrin kekal aplikasi
+      home: const LabHari4Screen(), // skrin kekal aplikasi
       onGenerateRoute: (settings) {
         if (settings.name == '/detail') {
           final programme = settings.arguments as Programme;
