@@ -13,7 +13,7 @@ class ProgrammeService {
   static const String _endpoint =
       'https://raw.githubusercontent.com/mfmz78-coder/ujian_flutter/main/mock-api/programmes.json';
 
-      static const String _baseUrl = 'http://localhost:3001';
+  static const String _baseUrl = 'http://localhost:3001';
 
   // ── 4.1 — GET paling bare, cetak sahaja ───────────────
   Future<List<Programme>> fetchProgrammes() async {
@@ -42,26 +42,21 @@ class ProgrammeService {
     return sampleProgrammes;
   }
 
-  Future<bool> submitApplication(
-  Application application,
-) async {
-  try {
-    final response = await _client
-        .post(
-          Uri.parse('$_baseUrl/applications'),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: jsonEncode(application.toJson()),
-        )
-        .timeout(const Duration(seconds: 8));
+  Future<bool> submitApplication(Application application) async {
+    try {
+      final response = await _client
+          .post(
+            Uri.parse('$_baseUrl/applications'),
+            headers: {'Content-Type': 'application/json'},
+            body: jsonEncode(application.toJson()),
+          )
+          .timeout(const Duration(seconds: 8));
 
-    return response.statusCode == 200 ||
-        response.statusCode == 201;
-  } catch (_) {
-    return false;
+      return response.statusCode == 200 || response.statusCode == 201;
+    } catch (_) {
+      return false;
+    }
   }
-}
 
   void dispose() => _client.close();
 }
