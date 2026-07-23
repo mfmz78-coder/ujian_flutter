@@ -31,9 +31,9 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
       final data = await _service.fetchProgrammes();
 
       setState(() {
-  _programmes = data;
-  _state = LoadState.loaded;
-});
+        _programmes = data;
+        _state = LoadState.loaded;
+      });
     } catch (_) {
       setState(() {
         _state = LoadState.error;
