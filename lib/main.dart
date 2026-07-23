@@ -55,7 +55,24 @@ class _SavedProgrammeCounterState extends State<SavedProgrammeCounter> {
 Future<void> main() async {
   final service = ProgrammeService();
 
-  await service.fetchProgrammes();
+  final programmes = await service.fetchProgrammes();
+
+  // ignore: avoid_print
+  print('Bilangan program: ${programmes.length}');
+
+  if (programmes.isNotEmpty) {
+    // ignore: avoid_print
+    print(
+      'Program pertama: '
+      '${programmes.first.universityName}',
+    );
+
+    // ignore: avoid_print
+    print(
+      'Bidang pertama: '
+      '${programmes.first.fieldOfStudy}',
+    );
+  }
 
   service.dispose();
 }
