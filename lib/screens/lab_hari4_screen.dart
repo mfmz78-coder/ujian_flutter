@@ -9,12 +9,10 @@ class LabHari4Screen extends StatefulWidget {
   const LabHari4Screen({super.key});
 
   @override
-  State<LabHari4Screen> createState() =>
-      _LabHari4ScreenState();
+  State<LabHari4Screen> createState() => _LabHari4ScreenState();
 }
 
-class _LabHari4ScreenState
-    extends State<LabHari4Screen> {
+class _LabHari4ScreenState extends State<LabHari4Screen> {
   final _service = ProgrammeService();
 
   // State Latihan 5 akan ditambah di sini.
@@ -22,14 +20,8 @@ class _LabHari4ScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Lab Hari 4 — Tawaran eTT (API)',
-        ),
-      ),
-      body: const Center(
-        child: Text('Belum sedia'),
-      ),
+      appBar: AppBar(title: const Text('Lab Hari 4 — Tawaran eTT (API)')),
+      body: const Center(child: Text('Belum sedia')),
     );
   }
 }
