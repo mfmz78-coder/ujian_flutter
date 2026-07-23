@@ -58,7 +58,7 @@ void main() {
     'country': 'Egypt',
     'city': 'Kaherah (Cairo)',
     'fieldOfStudy': 'Ujian',
-    'studyLevel': 'bachelor',
+    'studyLevel': 'phd',
     'category': 'spm',
     'estimatedAnnualCostMyr': 12000,
     'intakeMonth': 'September',
