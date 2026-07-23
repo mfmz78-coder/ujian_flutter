@@ -38,5 +38,13 @@ class ProgrammeService {
   }
 }
 
+Future<List<Programme>> _fallback() async {
+  await Future.delayed(
+    const Duration(milliseconds: 600),
+  );
+
+  return sampleProgrammes;
+}
+
   void dispose() => _client.close();
 }
