@@ -23,39 +23,35 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
   List<Programme> _programmes = [];
 
   Future<void> _load() async {
-  setState(() {
-    _state = LoadState.loading;
-  });
-
-  try {
-    final data = await _service.fetchProgrammes();
-
     setState(() {
-      _programmes = data;
-      _state = LoadState.loaded;
+      _state = LoadState.loading;
     });
-  } catch (_) {
-    setState(() {
-      _state = LoadState.error;
-    });
+
+    try {
+      final data = await _service.fetchProgrammes();
+
+      setState(() {
+        _programmes = data;
+        _state = LoadState.loaded;
+      });
+    } catch (_) {
+      setState(() {
+        _state = LoadState.error;
+      });
+    }
   }
-}
-
-@override
-void initState() {
-  super.initState();
-  _load();
-}
 
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: const Text(
-        'Lab Hari 4 — Tawaran eTT (API)',
-      ),
-    ),
-    body: _buildBody(),
-  );
-}
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Lab Hari 4 — Tawaran eTT (API)')),
+      body: _buildBody(),
+    );
+  }
 }
