@@ -9,7 +9,7 @@ class ProgrammeService {
 
   final http.Client _client;
 
-  static const String _endpoint = '<URL anda dari Latihan 2>';
+  static const String _endpoint = 'https://raw.githubusercontent.com/mfmz78-coder/ujian_flutter/main/mock-api/programmes.json';
 
   // ── 4.1 — GET paling bare, cetak sahaja ───────────────
   Future<List<Programme>> fetchProgrammes() async {
