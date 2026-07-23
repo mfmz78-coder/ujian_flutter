@@ -5,14 +5,7 @@ import '../services/programme_service.dart';
 import '../widgets/programme_card.dart';
 import 'programme_detail_screen.dart';
 
-
-enum LoadState {
-  idle,
-  loading,
-  loaded,
-  error,
-}
-
+enum LoadState { idle, loading, loaded, error }
 
 class LabHari4Screen extends StatefulWidget {
   const LabHari4Screen({super.key});
@@ -27,7 +20,7 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
   // State Latihan 5 akan ditambah di sini.
 
   LoadState _state = LoadState.idle;
-List<Programme> _programmes = [];
+  List<Programme> _programmes = [];
 
   @override
   Widget build(BuildContext context) {
