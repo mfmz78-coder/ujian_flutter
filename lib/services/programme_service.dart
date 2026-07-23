@@ -31,7 +31,7 @@ class ProgrammeService {
           )
           .toList();
     }
-
+print('status: ${response.statusCode}');
     return _fallback();
   } catch (_) {
     return _fallback();
