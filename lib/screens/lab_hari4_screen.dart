@@ -41,6 +41,12 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
   }
 }
 
+@override
+void initState() {
+  super.initState();
+  _load();
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
