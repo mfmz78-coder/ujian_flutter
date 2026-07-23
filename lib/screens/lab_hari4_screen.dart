@@ -81,6 +81,12 @@ class _LabHari4ScreenState extends State<LabHari4Screen> {
   }
 
   @override
+void dispose() {
+  _service.dispose();
+  super.dispose();
+}
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Lab Hari 4 — Tawaran eTT (API)')),
