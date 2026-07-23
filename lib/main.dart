@@ -3,7 +3,6 @@ import 'models/programme.dart';
 import 'screens/home_screen.dart';
 import 'screens/programme_detail_screen.dart';
 import 'theme.dart';
-import 'services/programme_service.dart';
 
 class SavedProgrammeCounter extends StatefulWidget {
   const SavedProgrammeCounter({super.key});
@@ -52,29 +51,8 @@ class _SavedProgrammeCounterState extends State<SavedProgrammeCounter> {
   }
 }
 
-Future<void> main() async {
-  final service = ProgrammeService();
-
-  final programmes = await service.fetchProgrammes();
-
-  // ignore: avoid_print
-  print('Bilangan program: ${programmes.length}');
-
-  if (programmes.isNotEmpty) {
-    // ignore: avoid_print
-    print(
-      'Program pertama: '
-      '${programmes.first.universityName}',
-    );
-
-    // ignore: avoid_print
-    print(
-      'Bidang pertama: '
-      '${programmes.first.fieldOfStudy}',
-    );
-  }
-
-  service.dispose();
+void main() {
+  runApp(const EttMobileApp());
 }
 
 class ProgrammeSummaryRow extends StatelessWidget {
