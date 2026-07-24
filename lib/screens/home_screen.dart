@@ -28,18 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final pages = <Widget>[
-      ProgrammeListScreen(
-        onApplicationSubmitted: _handleApplicationSubmitted,
-      ),
-      MyApplicationsScreen(
-        applications: _applications,
-      ),
+      ProgrammeListScreen(onApplicationSubmitted: _handleApplicationSubmitted),
+      MyApplicationsScreen(applications: _applications),
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('eTT Mobile'),
-      ),
+      appBar: AppBar(title: const Text('eTT Mobile')),
       body: pages[_selectedTab],
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedTab,
@@ -49,10 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.list_alt),
-            label: 'Tawaran',
-          ),
+          NavigationDestination(icon: Icon(Icons.list_alt), label: 'Tawaran'),
           NavigationDestination(
             icon: Icon(Icons.assignment_outlined),
             label: 'Permohonan Saya',
