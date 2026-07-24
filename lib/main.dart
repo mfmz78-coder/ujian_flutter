@@ -53,7 +53,10 @@ class _SavedProgrammeCounterState extends State<SavedProgrammeCounter> {
   }
 }
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('ms', null);
+
   runApp(const EttMobileApp());
 }
 
