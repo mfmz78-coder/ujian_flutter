@@ -1,9 +1,7 @@
-// lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
 
-import '../theme.dart';
+import '../models/application.dart';
 import 'my_applications_screen.dart';
-import 'profile_screen.dart';
 import 'programme_list_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,106 +12,51 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _index = 0;
+  int _selectedTab = 0;
 
-  static const _titles = ['Program', 'Permohonan Saya', 'Profil'];
-  static const _screens = [
-    ProgrammeListScreen(),
-    MyApplicationsScreen(),
-    ProfileScreen(),
-  ];
+  // Shared state:
+  // Borang akan menambah permohonan ke senarai ini.
+  // Tab "Permohonan Saya" akan membaca senarai yang sama.
+  final List<Application> _applications = [];
 
-  void _selectCountry(String? country) {
-    // Buat masa ini: tutup Drawer sahaja. Tapisan sebenar memerlukan
-    // setState() + hantar data ke widget anak — itu Hari 3 (SESI 5).
-    Navigator.of(context).pop(); // tutup Drawer
+  void _handleApplicationSubmitted(Application application) {
+    setState(() {
+      _applications.add(application);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final pages = <Widget>[
+      ProgrammeListScreen(
+        onApplicationSubmitted: _handleApplicationSubmitted,
+      ),
+      MyApplicationsScreen(
+        applications: _applications,
+      ),
+    ];
+
     return Scaffold(
-      appBar: AppBar(title: Text('eTT Mobile · ${_titles[_index]}')),
-      body: _screens[_index],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _index,
-        onTap: (i) => setState(() => _index = i),
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: KptTheme.navy,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school_outlined),
-            label: 'Program',
+      appBar: AppBar(
+        title: const Text('eTT Mobile'),
+      ),
+      body: pages[_selectedTab],
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedTab,
+        onDestinationSelected: (index) {
+          setState(() {
+            _selectedTab = index;
+          });
+        },
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.list_alt),
+            label: 'Tawaran',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(Icons.assignment_outlined),
             label: 'Permohonan Saya',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Profil',
-          ),
-        ],
-      ),
-
-      // 👈 5.3 — TAMBAH drawer: SELEPAS bottomNavigationBar
-      //       appBar: AppBar(title: Text('eTT Mobile · ${_titles[_index]}')),
-      // drawer: _CountryDrawer(onSelect: _selectCountry),
-      // body: _screens[_index],
-    );
-  }
-}
-
-class _CountryOption {
-  const _CountryOption(this.value, this.label, this.flag);
-  final String? value;
-  final String label;
-  final String flag;
-}
-
-class _CountryDrawer extends StatelessWidget {
-  const _CountryDrawer({required this.onSelect});
-  final void Function(String?) onSelect;
-
-  static const _options = [
-    _CountryOption(null, 'Semua Negara', '🌍'),
-    _CountryOption('Egypt', 'Mesir', '🇪🇬'),
-    _CountryOption('Morocco', 'Maghribi', '🇲🇦'),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: KptTheme.navy),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  'eTT Mobile',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 4),
-                Text(
-                  'Program pengajian Timur Tengah',
-                  style: TextStyle(color: Colors.white70, fontSize: 13),
-                ),
-              ],
-            ),
-          ),
-          for (final option in _options)
-            ListTile(
-              leading: Text(option.flag, style: const TextStyle(fontSize: 22)),
-              title: Text(option.label),
-              onTap: () => onSelect(option.value),
-            ),
         ],
       ),
     );
